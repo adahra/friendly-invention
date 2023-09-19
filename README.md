@@ -191,6 +191,24 @@ So here's how to use this correctly in your own apps:
 - within that folder, create the `presentation`, `application`, `domain`, `data` sub-folders as needed
 - inside each sub-folder, add all the files you need
 
+For reference, here's how my final project structure ended up:
+- `lib`
+  - `src`
+    - `common_widgets`
+    - `constants`
+    - `exceptions`
+    - `features`
+      - `address`
+      - `authentication`
+      - `cart`
+      - `checkout`
+      - `orders`
+      - `products`
+      - `reviews`
+    - `localization`
+    - `routing`
+    - `utils`
+
 Without even looking inside folders such as `common_widgets`, `constants`, `exceptions`, `localization`, `routing`, and `utils`, we can guess that they all contain code that is **truly shared** across features, or needs to be **centralized** for a good reason (such as localization and routing).
 
 And these folders all contain relatively little code.

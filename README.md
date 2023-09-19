@@ -183,7 +183,7 @@ But we end up with far fewer files that are shared across all features, and the 
 
 
 ## How to do feature-first, the right way
-In summary, the feature-first approach lets us structure our project around the functional requirements of our app.
+In summary, the **feature-first** approach lets us structure our project around the functional requirements of our app.
 
 So here's how to use this correctly in your own apps:
 - start from the **domain layer** and identify the model classes and business logic for manipulating them

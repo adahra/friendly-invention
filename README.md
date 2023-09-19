@@ -35,20 +35,20 @@ So let's explore these two conventions in more detail and learn about their trad
 To keep things simple, suppose we have only two features in the app.
 
 If we adopt the **layer-first** approach, our project structure may look like this:
-`- lib
-  - src
-    - presentation
-      - feature1
-      - feature2
-    - application
-      - feature1
-      - feature2
-    - domain
-      - feature1
-      - feature2
-    - data
-      - feature1
-      - feature2`
+- `lib`
+  - `src`
+    - `presentation`
+      - `feature1`
+      - `feature2`
+    - `application`
+      - `feature1`
+      - `feature2`
+    - `domain`
+      - `feature1`
+      - `feature2`
+    - `data`
+      - `feature1`
+      - `feature2`
 
 With this approach, we can add all the relevant Dart files inside each feature folder, ensuring that they belong to the correct layer (widgets and controllers inside *presentation*, models inside *domain*, etc.).
 
@@ -67,19 +67,19 @@ For these reasons, the feature-first approach is often a better choice when buil
 The feature-first approach demands that we create a new folder for every new feature that we add to our app. And inside that folder, we can add the layers themselves as sub-folders.
 
 Using the same example as above, we would organize our project like this:
-`- lib
-  - src
-    - features
-      - feature1
-        - presentation
-        - application
-        - domain
-        - data
-      - feature2
-        - presentation
-        - application
-        - domain
-        - data`
+- `lib`
+  - `src`
+    - `features`
+      - `feature1`
+        - `presentation`
+        - `application`
+        - `domain`
+        - `data`
+      - `feature2`
+        - `presentation`
+        - `application`
+        - `domain`
+        - `data`
 
 I find this approach more logical because we can easily see all the files that belong to a certain feature, grouped by layer.
 

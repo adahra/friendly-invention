@@ -112,3 +112,85 @@ In this scenario, there is no right or wrong answer, and you have to use your be
 When we focus on the UI, we're likely to think of a feature as a single page or screen in the app.
 
 But when it came to putting the **presentation**, **application**, **domain**, and **data** layers inside them, I ran into trouble because some models and repositories were shared by multiple pages (such as the `product_page` and `product_list`).
+
+As a result, I ended up creating top-level folders for **services**, **models**, and **repositories**:
+- `lib`
+  - `src`
+    - `features`
+      - `account`
+      - `admin`
+      - `checkout`
+      - `leave_review_page`
+      - `orders_list`
+      - `product_page`
+      - `products_list`
+      - `shopping_cart`
+      - `sign_in`
+    - `models` <-- **should this go here?**
+    - `repositories` <-- **should this go here?**
+    - `services` <-- **should this go here?**
+
+In other words, I had applied a **feature-first** approach to the `features` folder, which represented my entire presentation layer. But I cornered myself into a **layer-first** approach for the remaining layers, and this influenced my project structure in an unintended way.
+
+## What is a "feature"?
+So I took a step back and asked myself: "what is a feature"?
+
+And I realized it's not about what the user sees, but what the user does:
+- authenticate
+- manage the shopping cart
+- checkout
+- view all past orders
+- leave a review
+
+In other words, a feature is a functional requirement that helps the user complete a given task.
+
+And taking some hints from domain-driven design, I decided to organize the project structure around the domain layer.
+
+Once I figured that out, everything fell into place. And I ended up with seven functional areas:
+- `lib`
+  - `src`
+    - `features`
+      - `address`
+        - `application`
+        - `data`
+        - `domain`
+        - `presentation`
+      - `authentication`
+        `...`
+      - `cart`
+        `...`
+      - `checkout`
+        `...`
+      - `orders`
+        `...`
+      - `products`
+        - `application`
+        - `data`
+        - `domain`
+        - `presentation`
+          - `admin`
+          - `product_screen`
+          - `products_list`
+      - `reviews`
+        `...`
+
+Note that with this approach is still possible for code inside a given feature to depend on code from a different feature. For example:
+- the product page shows a list of **reviews**
+- the orders page shows some **product** information
+- the checkout flow requires the user to **authenticate** first
+
+But we end up with far fewer files that are shared across all features, and the entire structure is much more balanced.
+
+
+## How to do feature-first, the right way
+In summary, the feature-first approach lets us structure our project around the functional requirements of our app.
+
+So here's how to use this correctly in your own apps:
+- start from the **domain layer** and identify the model classes and business logic for manipulating them
+- create a folder for each model (or group of models) that **belong together**
+- within that folder, create the `presentation`, `application`, `domain`, `data` sub-folders as needed
+- inside each sub-folder, add all the files you need
+
+Without even looking inside folders such as `common_widgets`, `constants`, `exceptions`, `localization`, `routing`, and `utils`, we can guess that they all contain code that is **truly shared** across features, or needs to be **centralized** for a good reason (such as localization and routing).
+
+And these folders all contain relatively little code.

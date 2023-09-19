@@ -111,4 +111,4 @@ In this scenario, there is no right or wrong answer, and you have to use your be
 ## Feature-first is not about the UI!
 When we focus on the UI, we're likely to think of a feature as a single page or screen in the app.
 
-But when it came to putting the **presentation**, **application**, **domain**, and **data** layers inside them, I ran into trouble because some models and repositories were shared by multiple pages (such as the *product_page* and *product_list*).
+But when it came to putting the **presentation**, **application**, **domain**, and **data** layers inside them, I ran into trouble because some models and repositories were shared by multiple pages (such as the `product_page` and `product_list`).
